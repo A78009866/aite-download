@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Aite — حمّل التطبيق</title>
+    <meta
+      name="description"
+      content="تواصل بشكل أنيق مع الجميع مع تطبيق Aite. Connect elegantly with everyone with Aite."
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+
+    <style>
+      @font-face {
+        font-family: "Alexandria";
+        src: url("assets/fonts/alexandria-400.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Alexandria";
+        src: url("assets/fonts/alexandria-500.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Alexandria";
+        src: url("assets/fonts/alexandria-700.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+      }
+
+      :root {
+        --black: #000000;
+        --white: #ffffff;
+        --muted: #a7a7a7;
+        --line: #242424;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-height: 100%;
+        background: var(--black);
+      }
+
+      body {
+        min-height: 100vh;
+        min-height: 100svh;
+        margin: 0;
+        padding: max(28px, env(safe-area-inset-top)) 22px
+          max(28px, env(safe-area-inset-bottom));
+        display: grid;
+        place-items: center;
+        overflow-x: hidden;
+        background: var(--black);
+        color: var(--white);
+        font-family: "Alexandria", "Noto Sans Arabic", "Segoe UI", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .hero {
+        width: min(100%, 620px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        animation: appear 0.7s ease-out both;
+      }
+
+      .brand {
+        margin: 0 auto 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(18px, 4vw, 30px);
+        direction: ltr;
+      }
+
+      .brand-mark {
+        width: clamp(76px, 13vw, 104px);
+        height: auto;
+        display: block;
+        flex: 0 0 auto;
+      }
+
+      .brand-divider {
+        width: 1px;
+        height: clamp(62px, 10vw, 82px);
+        flex: 0 0 auto;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255, 255, 255, 0.72) 18%,
+          rgba(255, 255, 255, 0.72) 82%,
+          transparent
+        );
+      }
+
+      .brand-name {
+        width: clamp(165px, 29vw, 230px);
+        height: auto;
+        display: block;
+        flex: 0 1 auto;
+      }
+
+      .announcement {
+        margin: 0;
+      }
+
+      .status {
+        width: fit-content;
+        margin: 0 auto 22px;
+        padding: 8px 13px;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #d8d8d8;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0.04em;
+      }
+
+      .status-dot {
+        width: 6px;
+        height: 6px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: var(--white);
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
+      }
+
+      .title-ar {
+        max-width: 570px;
+        margin: 0;
+        font-size: clamp(27px, 5vw, 45px);
+        font-weight: 700;
+        line-height: 1.45;
+        letter-spacing: -0.045em;
+      }
+
+      .title-en {
+        max-width: 520px;
+        margin: 10px auto 32px;
+        color: var(--muted);
+        font-size: clamp(14px, 2vw, 18px);
+        font-weight: 400;
+        line-height: 1.75;
+        letter-spacing: -0.01em;
+      }
+
+      .download-button {
+        width: min(100%, 330px);
+        min-height: 64px;
+        padding: 10px 19px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 13px;
+        border: 1px solid var(--white);
+        border-radius: 19px;
+        background: var(--white);
+        color: var(--black);
+        text-decoration: none;
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        transition: transform 180ms ease, box-shadow 180ms ease,
+          background-color 180ms ease, color 180ms ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .download-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 34px rgba(255, 255, 255, 0.13);
+      }
+
+      .download-button:active {
+        transform: translateY(0) scale(0.985);
+      }
+
+      .download-button:focus-visible {
+        outline: 3px solid rgba(255, 255, 255, 0.38);
+        outline-offset: 4px;
+      }
+
+      .download-icon {
+        width: 23px;
+        height: 23px;
+        flex: 0 0 auto;
+      }
+
+      .button-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        text-align: start;
+      }
+
+      .button-ar {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .button-en {
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: 0.06em;
+        opacity: 0.58;
+      }
+
+      .platform-note {
+        margin: 14px 0 0;
+        color: #6f6f6f;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding-right: 18px;
+          padding-left: 18px;
+        }
+
+        .brand {
+          width: 100%;
+          margin-bottom: 32px;
+          gap: 17px;
+        }
+
+        .brand-mark {
+          width: 72px;
+        }
+
+        .brand-divider {
+          height: 58px;
+        }
+
+        .brand-name {
+          width: min(170px, 48vw);
+        }
+
+        .status {
+          margin-bottom: 19px;
+          font-size: 10px;
+        }
+
+        .title-en {
+          margin-top: 8px;
+          margin-bottom: 27px;
+        }
+      }
+
+      @media (max-height: 700px) {
+        .brand {
+          margin-bottom: 22px;
+        }
+
+        .brand-mark {
+          width: 68px;
+        }
+
+        .brand-divider {
+          height: 54px;
+        }
+
+        .brand-name {
+          width: 158px;
+        }
+
+        .status {
+          margin-bottom: 15px;
+        }
+
+        .title-en {
+          margin-bottom: 22px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero {
+          animation: none;
+        }
+
+        .download-button {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="hero">
+      <div class="brand" aria-label="Aite">
+        <img class="brand-mark" src="assets/logo-mark.png" alt="شعار Aite" />
+        <span class="brand-divider" aria-hidden="true"></span>
+        <img class="brand-name" src="assets/wordmark.png" alt="Aite" />
+      </div>
+
+      <section class="announcement" aria-labelledby="announcement-title">
+        <p class="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>متاح الآن&nbsp; · &nbsp;<span dir="ltr">AVAILABLE NOW</span></span>
+        </p>
+
+        <h1 class="title-ar" id="announcement-title">
+          تواصل بشكل أنيق مع الجميع!
+        </h1>
+        <p class="title-en" lang="en" dir="ltr">
+          Connect elegantly with everyone!
+        </p>
+      </section>
+
+      <a
+        class="download-button"
+        href="https://pub-ac6ca2c23fe44a8c93e7a74791c80260.r2.dev/Aite-1.2.1-release.apk"
+        aria-label="تحميل تطبيق Aite لأجهزة Android"
+        download
+      >
+        <svg
+          class="download-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 3v11m0 0 4-4m-4 4-4-4M5 18.5v.5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-.5"
+            stroke="currentColor"
+            stroke-width="1.9"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="button-copy">
+          <span class="button-ar">حمّل Aite الآن</span>
+          <span class="button-en" lang="en" dir="ltr">DOWNLOAD FOR ANDROID</span>
+        </span>
+      </a>
+
+      <p class="platform-note" lang="en" dir="ltr">ANDROID · APK</p>
+    </main>
+  </body>
+</html>
